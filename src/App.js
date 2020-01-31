@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import routes from './routes'
+import Nav from './Components/Nav'
+import {connect} from 'react-redux'
+import {getUser} from './redux/authReducer'
+import {getPosts} from './redux/postReducer'
+import {withRouter} from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  componentDidMount(){
+    const {getUser, getPosts} = this.props
+    getUser()
+    getPosts()
+  }
+
+  render(){
+    const {pathname} = this.props.location
+    return (
+      <div className="App">
+        {(pathname !== '/' && pathname !== '/register') && <Nav />}
+        {routes}
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  const {user} = state.authReducer
+  return {
+    user
+  }
+}
+
+const mapDispatchToProps = {
+  getUser, getPosts
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App))
