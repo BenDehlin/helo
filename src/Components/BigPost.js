@@ -14,8 +14,9 @@ class BigPost extends Component{
   }
 
   componentDidMount(){
-    axios.get(`/api/posts/${this.props.match.params.id}`).then(results => {
+    axios.get(`/api/post/${this.props.match.params.id}`).then(results => {
       const {id, author, author_img, title, img, content} = results.data
+      console.log(results.data)
       this.setState({id, author, author_img, title, img, content})
     })
   }

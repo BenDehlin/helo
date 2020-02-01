@@ -16,6 +16,8 @@ module.exports = {
       }).catch(err => res.status(500).send(err))
     }else if(mypost === 'false' && search){
       console.log('not my posts, search')
+      console.log(search)
+      console.log(id)
       db.filter_not_my_posts([search, id]).then(results => {
         return res.status(200).send(results)
       }).catch(err => res.status(500).send(err))
