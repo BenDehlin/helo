@@ -66,7 +66,6 @@ class Authentication extends Component{
       >Switch to Register</button>}</span>
       </div>
     <div className='input-field'>
-      <span>Username:</span>
       <input
         value={username}
         name='username'
@@ -75,7 +74,6 @@ class Authentication extends Component{
       />
     </div>
     <div className ='input-field'>
-      <span>Password:</span>
       <input 
         value={password}
         name='password'

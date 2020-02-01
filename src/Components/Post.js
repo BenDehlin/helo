@@ -15,14 +15,8 @@ function Post(props){
       push(`/post/${id}`)
     }}
     >
-      <h1>{title}</h1>
-      {/* <img src={img} /> */}
-      {/* <h3>{content}</h3> */}
+      <h2>{title}</h2>
       <div className='post-right-side'>
-
-      {/* <button
-      onClick = {() => props.deletePost(id)}
-      >Delete</button> */}
       <div className='profile-info'>
       <h4>by {author}</h4>
       <ProfileImage author_img={author_img} />

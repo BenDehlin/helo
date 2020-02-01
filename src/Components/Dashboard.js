@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import { getUser } from '../redux/authReducer'
 import {getPosts} from '../redux/postReducer'
 import Post from './Post'
+import search_logo from '../assets/search_logo.png'
 
 class Dashboard extends Component {
   constructor(props){
@@ -34,17 +35,22 @@ class Dashboard extends Component {
       <div className='dashboard'>
         <div className='search-field'>
         <input
+        className='search-input'
         name='search'
         value={search}
         placeholder='Search Posts'
         onChange = {(e) => this.handleChange(e.target)}
         />
-        <button
+        <img 
+        className='search-logo'
+        src = {search_logo}
         onClick = {() => {
-          getPosts(search, myPost, user.id)
-          this.setState({search: ''})
+          if(user){
+            getPosts(search, myPost, user.id)
+            this.setState({search: ''})
+          }
         }}
-        >Search</button>
+        />
         <button
         onClick = {() => {
           getPosts()

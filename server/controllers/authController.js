@@ -30,7 +30,6 @@ module.exports = {
     }
     delete user.hash
     req.session.user = user
-    console.log(req.session.user)
     res.status(200).send(req.session.user)
   },
   logout: (req, res) => {
@@ -38,7 +37,6 @@ module.exports = {
     res.sendStatus(200)
   },
   getUser: (req, res) => {
-    console.log(req.session.user)
     if(!req.session.user){
       return res.status(401).send('No user found')
     }else{
