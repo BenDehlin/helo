@@ -4,5 +4,5 @@ JOIN users u ON (p.author_id = u.id)
 WHERE (u.username ILIKE ('%'||'test'||'%')
 OR p.title ILIKE ('%'||'test'||'%')
 OR p.content ILIKE ('%'||'test'||'%'))
-AND author_id != 5
+AND author_id != $1
 ORDER BY p.id DESC;

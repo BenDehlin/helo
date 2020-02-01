@@ -7,9 +7,7 @@ const {SESSION_SECRET, CONNECTION_STRING, SERVER_PORT} = process.env
 const authCtrl = require('./controllers/authController')
 const postCtrl = require('./controllers/postController')
 const authMid = require('./middleware/authMiddleware')
-// const cors = require('cors')
 
-// app.use(cors())
 app.use(express.json())
 app.use(session({
   secret: SESSION_SECRET,
